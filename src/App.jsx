@@ -1,11 +1,11 @@
 import React from 'react'
-
+import logo from './assets/logo.jpg'
 function App() {
   return (
     <nav className='mx-10 mt-4 flex-wrap'>
       <div className=' bg-gray-900 rounded-full text-white flex justify-between items-center px-6 py-3'>
         <div className=' flex  gap-3 items-center font-bold text-2xl'>
-          <img className='rounded-full w-12 h-12  ' src="src/assets/logo.jpg" alt="" />
+          <img className='rounded-full w-12 h-12  ' src="{logo}" alt="logo" />
           <h1>Sony <span className='text-[blue]'>Chaudhary</span></h1>
 
         </div>
