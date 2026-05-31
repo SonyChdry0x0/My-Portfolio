@@ -20,7 +20,7 @@ export default function Footer() {
           {/* Center */}
           <div className="flex gap-5 text-xl">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/SonyChdry0x0"
               target="_blank"
               rel="noreferrer"
               className="hover:text-orange-500 transition"
@@ -29,7 +29,7 @@ export default function Footer() {
             </a>
 
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://www.linkedin.com/in/sony-kumari-chaudhary-000b35314/"
               target="_blank"
               rel="noreferrer"
               className="hover:text-orange-500 transition"
@@ -38,7 +38,7 @@ export default function Footer() {
             </a>
 
             <a
-              href="mailto:your@email.com"
+              href="mailto:chaudharysony336@gmail.com"
               className="hover:text-orange-500 transition"
             >
               <FaEnvelope />

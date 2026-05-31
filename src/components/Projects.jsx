@@ -5,28 +5,37 @@ const projects = [
     title: "Portfolio Website",
     description:
       "A fully responsive portfolio built with React and Tailwind CSS featuring dark mode, animations, and smooth scrolling.",
-    image: "/projects/portfolio.png",
+    image: "src/assets/Portfolios.png",
     tech: ["React", "Tailwind", "Vite"],
     github: "#",
     live: "#",
   },
   {
-    title: "E-Commerce Store",
+    title: "TrendMorph",
     description:
-      "Modern online store with product filtering, cart management, and responsive UI.",
-    image: "/projects/ecommerce.png",
-    tech: ["React", "Context API", "Tailwind"],
-    github: "#",
-    live: "#",
+      "Developed an AI-powered content generation platform that analyzes real-time trends from YouTube, Reddit, Pinterest, and X (Twitter), leveraging SDXL, BLIP, T5, Whisper, and LangChain to automatically generate captions, hashtags, blogs, AI images, voice-overs, and trend-driven content recommendations.",
+    image: "src/assets/trend.png",
+    tech: ["React", "Node.js", "Express", "MongoDB", "Python"],
+    github: "",
+    live: "https://trendmorphai.rajeshpandey10.com.np",
   },
   {
-    title: "Task Manager",
+    title: "Smart Face Attendance System",
     description:
-      "Task management application with CRUD operations, local storage, and clean UI.",
-    image: "/projects/taskmanager.png",
-    tech: ["React", "JavaScript", "CSS"],
-    github: "#",
-    live: "#",
+      "Developed a smart attendance management system using OpenCV and facial recognition technology to automatically identify and record student attendance in real time through webcam-based face detection. The system improves accuracy, reduces manual effort, and provides an efficient solution for attendance tracking and management.",
+    image: "src/assets/facerecognition.png",
+    tech: ["HTML", "JavaScript", "CSS", "Python"],
+    github: "https://github.com/SonyChdry0x0/Smart-face-attendance-system",
+    live: "",
+  },
+  {
+    title: "Student Management System",
+    description:
+      "Developed a student management system that streamlines student record administration, attendance tracking, and report generation. The application enables efficient data management, course-wise attendance monitoring, and exportable reports, improving accuracy and reducing administrative workload.",
+    image: "src/assets/sms.png",
+    tech: ["HTML", "JavaScript", "CSS", "PHP", "MySQL"],
+    github: "https://github.com/SonyChdry0x0/student-management-system",
+    live: "",
   },
 ];
 
@@ -41,32 +50,34 @@ export default function Projects() {
           Projects
         </span>
 
-        <h2 className="text-4xl md:text-5xl font-bold mt-2 mb-12">
+        <h2 className="text-3xl md:text-5xl font-bold mt-2 mb-16">
           Featured Work
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
+        <div className="space-y-24">
+          {projects.map((project, index) => (
             <div
               key={project.title}
-              className="group bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+              className={`flex flex-col md:flex-row items-center gap-12 ${
+                index % 2 === 0 ? "md:flex-row-reverse" : ""
+              }`}
             >
               {/* Image */}
-              <div className="overflow-hidden h-52">
+              <div className="md:w-1/2">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                  className="w-full rounded-2xl shadow-lg hover:scale-105 transition duration-500"
                 />
               </div>
 
               {/* Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-3">
+              <div className="md:w-1/2">
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">
                   {project.title}
                 </h3>
 
-                <p className="text-gray-600 dark:text-gray-300 text-sm leading-6 mb-5">
+                <p className="text-gray-600 dark:text-gray-300 leading-7 mb-6">
                   {project.description}
                 </p>
 
@@ -75,7 +86,7 @@ export default function Projects() {
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="bg-orange-100 text-orange-600 dark:bg-orange-500/20 dark:text-orange-400 px-3 py-1 rounded-full text-xs font-medium"
+                      className="bg-orange-100 text-orange-600 dark:bg-orange-500/20 dark:text-orange-400 px-3 py-1 rounded-full text-sm font-medium"
                     >
                       {tech}
                     </span>
@@ -83,26 +94,30 @@ export default function Projects() {
                 </div>
 
                 {/* Links */}
-                <div className="flex justify-between items-center">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center gap-2 hover:text-orange-500 transition"
-                  >
-                    <FaGithub />
-                    Code
-                  </a>
+                <div className="flex gap-6">
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 hover:text-orange-500 transition"
+                    >
+                      <FaGithub />
+                      Code
+                    </a>
+                  )}
 
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center gap-2 hover:text-orange-500 transition"
-                  >
-                    Live Demo
-                    <FaExternalLinkAlt />
-                  </a>
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 hover:text-orange-500 transition"
+                    >
+                      Live Demo
+                      <FaExternalLinkAlt />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

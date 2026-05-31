@@ -68,7 +68,7 @@ export default function Nav() {
             </h2>
           </div>
 
-          {/* DESKTOP LINKS */}
+         
           <div className="hidden md:flex items-center gap-8">
             {links.map((link) => (
               <button
@@ -92,7 +92,7 @@ export default function Nav() {
               {darkMode ? <FaSun /> : <FaMoon />}
             </button>
 
-            {/* RESUME */}
+            
             <a
               href={resume}
               download
@@ -101,7 +101,7 @@ export default function Nav() {
               Resume
             </a>
 
-            {/* MOBILE MENU */}
+           
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="md:hidden flex flex-col gap-1.5"

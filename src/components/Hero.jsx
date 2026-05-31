@@ -11,7 +11,7 @@ export default function Hero() {
   const [wordIndex, setWordIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const skills = ["React", "JavaScript", "Tailwind", "Git"];
+  const skills = ["React", "JavaScript", "Tailwind","Next","GitHub", "Git"];
 
   const stats = [
     { value: "10+", label: "Projects Built" },
@@ -58,7 +58,7 @@ export default function Hero() {
         <div className="flex items-center gap-2 mb-5">
           <span className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></span>
           <span className="text-sm text-gray-600 dark:text-gray-300">
-            Available for Internship Opportunities
+            Available for opportunities
           </span>
         </div>
 
@@ -70,7 +70,7 @@ export default function Hero() {
         </div>
 
         {/* Heading */}
-        <h1 className="text-5xl md:text-7xl font-bold leading-tight text-gray-900 dark:text-white">
+        <h1 className="text-4xl md:text-6xl font-bold leading-tight text-gray-900 dark:text-white">
           Turning Ideas Into
           <br />
           <span className="text-orange-600">Modern Web Apps</span>
@@ -151,31 +151,48 @@ export default function Hero() {
       </motion.div>
 
       {/* RIGHT SIDE */}
-      <motion.div
-        className="flex-1 flex justify-center mb-10 md:mb-0"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="relative w-72 h-72 md:w-96 md:h-96">
-          {/* Rotating Ring */}
-          <div className="absolute inset-0 rounded-full animate-spin-slow border-[5px] border-orange-500 border-t-transparent"></div>
+      {/* RIGHT SIDE */}
+<motion.div
+  className="flex-1 flex justify-center mb-10 md:mb-0"
+  initial={{ opacity: 0, scale: 0.8 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.8 }}
+>
+  <div className="relative w-72 h-72 md:w-96 md:h-96">
 
-          {/* Glow */}
-          <div className="absolute inset-0 rounded-full bg-orange-500 blur-3xl opacity-20"></div>
+    {/* Rotating Ring */}
+    <div className="absolute inset-0 rounded-full animate-spin-slow border-[5px] border-orange-500 border-t-transparent"></div>
 
-          {/* Image */}
-          <img
-            src={profile}
-            alt="Profile"
-            className="relative w-full h-full rounded-full object-cover border-4 border-orange-500 shadow-2xl"
-          />
+    {/* Glow */}
+    <div className="absolute inset-0 rounded-full bg-orange-500 blur-3xl opacity-20"></div>
 
-          {/* Floating Skills */}
+    {/* Profile Image */}
+    <img
+      src={profile}
+      alt="Profile"
+      className="relative w-full h-full rounded-full object-cover border-4 border-orange-500 shadow-2xl"
+    />
+
+
+    {/* DESKTOP FLOATING SKILLS */}
+     {skills.map((skill, index) => (
+            <div
+              key={`mob-${skill}`}
+              className="md:hidden absolute bg-white dark:bg-gray-900 shadow-md rounded-full px-3 py-1.5 text-xs font-medium hover:scale-110 transition"
+              style={{
+                top: index % 2 === 0 ? "-50px" : "-25px",
+                left: `${index * 44}px`,
+              }}
+            >
+              {skill}
+            </div>
+          ))}
+
+          {/* DESKTOP: skills float to the right */}
           {skills.map((skill, index) => (
             <div
-              key={skill}
-              className="absolute bg-white dark:bg-gray-900 shadow-md rounded-full px-4 py-2 text-sm font-medium hover:scale-110 transition"
+              key={`desk-${skill}`}
+              className="hidden md:block absolute bg-white dark:bg-gray-900 shadow-md rounded-full px-4 py-2 text-sm font-medium hover:scale-110 transition"
               style={{
                 top: `${30 + index * 60}px`,
                 right: index % 2 === 0 ? "-70px" : "-110px",
@@ -184,8 +201,10 @@ export default function Hero() {
               {skill}
             </div>
           ))}
-        </div>
-      </motion.div>
+   
+  </div>
+</motion.div>
+
     </section>
   );
 }
