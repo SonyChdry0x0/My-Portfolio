@@ -11,6 +11,8 @@ import {
   SiTypescript,
 } from "react-icons/si";
 
+import { motion } from "framer-motion";
+
 const skills = [
   {
     icon: <FaReact />,
@@ -56,6 +58,29 @@ const skills = [
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
 export default function Skills() {
   return (
     <section
@@ -67,45 +92,100 @@ export default function Skills() {
           Skills
         </span>
 
-        <h2 className="text-4xl md:text-5xl font-bold mt-2 mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold mt-2 mb-12 text-gray-900 dark:text-white">
           Technologies I Work With
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {skills.map((skill) => (
-            <div
+            <motion.div
               key={skill.name}
-              className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+              variants={cardVariants}
+              whileHover={{
+                y: -8,
+                scale: 1.03,
+              }}
+              transition={{ duration: 0.3 }}
+              className="
+                group
+                relative
+                overflow-hidden
+                rounded-2xl
+                border
+                border-gray-200
+                dark:border-gray-800
+                bg-white
+                dark:bg-gray-900
+                p-6
+                shadow-md
+                hover:shadow-xl
+              "
             >
-              <div className="flex items-center gap-4 mb-5">
-                <div
-                  className={`text-4xl ${skill.color}`}
-                >
-                  {skill.icon}
+              {/* Hover Glow */}
+              <div
+                className="
+                  absolute
+                  inset-0
+                  opacity-0
+                  group-hover:opacity-100
+                  transition-opacity
+                  duration-500
+                  bg-blue-500/5
+                "
+              />
+
+              <div className="relative z-10">
+                <div className="flex items-center gap-4 mb-5">
+                  <motion.div
+                    animate={{
+                      y: [0, -5, 0],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className={`text-4xl ${skill.color}`}
+                  >
+                    {skill.icon}
+                  </motion.div>
+
+                  <div>
+                    <h3 className="font-semibold text-lg text-gray-900 dark:text-white">
+                      {skill.name}
+                    </h3>
+
+                    <p className="text-sm text-gray-500">
+                      {skill.level}%
+                    </p>
+                  </div>
                 </div>
 
-                <div>
-                  <h3 className="font-semibold text-lg">
-                    {skill.name}
-                  </h3>
-
-                  <p className="text-sm text-gray-500">
-                    {skill.level}%
-                  </p>
+                {/* Progress Bar */}
+                <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{
+                      width: `${skill.level}%`,
+                    }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 1.5,
+                      ease: "easeOut",
+                    }}
+                    className="h-full rounded-full bg-orange-500"
+                  />
                 </div>
               </div>
-
-              <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-orange-500 rounded-full transition-all duration-1000"
-                  style={{
-                    width: `${skill.level}%`,
-                  }}
-                />
-              </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

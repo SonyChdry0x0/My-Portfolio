@@ -1,47 +1,35 @@
 import { useState, useEffect } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
+import resume from "../assets/sonychaudharycv.pdf";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
-  // Scroll effect
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Load saved theme on first render
   useEffect(() => {
-  const saved = localStorage.getItem("theme");
+    const saved = localStorage.getItem("theme");
+    const isDark = saved === "dark";
 
-  const isDark = saved === "dark";
+    setDarkMode(isDark);
 
-  setDarkMode(isDark);
+    document.documentElement.classList.toggle("dark", isDark);
+  }, []);
 
-  if (isDark) {
-    document.documentElement.classList.add("dark");
-  } else {
-    document.documentElement.classList.remove("dark");
-  }
-}, []);
-
-  // Toggle theme
   const toggleDarkMode = () => {
-  const newMode = !darkMode;
+    const newMode = !darkMode;
+    setDarkMode(newMode);
 
-  setDarkMode(newMode);
-
-  if (newMode) {
-    document.documentElement.classList.add("dark");
-    localStorage.setItem("theme", "dark");
-  } else {
-    document.documentElement.classList.remove("dark");
-    localStorage.setItem("theme", "light");
-  }
-};
+    document.documentElement.classList.toggle("dark", newMode);
+    localStorage.setItem("theme", newMode ? "dark" : "light");
+  };
 
   const links = [
     { name: "Home", href: "#hero" },
@@ -56,7 +44,9 @@ export default function Nav() {
   };
 
   return (
-    <nav
+    <motion.nav
+      initial={{ y: -30, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
       className={`sticky top-0 z-50 border-b transition-all duration-300
       ${
         scrolled
@@ -84,7 +74,7 @@ export default function Nav() {
               <button
                 key={link.name}
                 onClick={() => handleNav(link.href)}
-                className="text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300 hover:text-orange-500 transition"
+                className="text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300 hover:text-orange-500 transition hover:-translate-y-0.5"
               >
                 {link.name}
               </button>
@@ -94,7 +84,7 @@ export default function Nav() {
           {/* RIGHT SIDE */}
           <div className="flex items-center gap-4">
 
-            {/* DARK MODE TOGGLE */}
+            {/* DARK MODE */}
             <button
               onClick={toggleDarkMode}
               className="p-3 rounded-full border border-gray-300 dark:border-gray-700 hover:scale-110 transition"
@@ -104,15 +94,14 @@ export default function Nav() {
 
             {/* RESUME */}
             <a
-              href="src/assets/sonychaudharycv.pdf"
-              target="_blank"
-              rel="noreferrer"
-              className="hidden md:block px-5 py-2 rounded-full bg-orange-500 text-white font-medium hover:scale-105 transition"
+              href={resume}
+              download
+              className="hidden md:block px-5 py-2 rounded-full bg-orange-500 text-white font-medium hover:scale-105 transition shadow-md"
             >
               Resume
             </a>
 
-            {/* MOBILE MENU BUTTON */}
+            {/* MOBILE MENU */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="md:hidden flex flex-col gap-1.5"
@@ -136,32 +125,40 @@ export default function Nav() {
           </div>
         </div>
 
-        {/* MOBILE MENU */}
-        <div
-          className={`md:hidden overflow-hidden transition-all duration-500 ${
-            menuOpen ? "max-h-64 opacity-100 pb-4" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="flex flex-col gap-4">
-            {links.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => handleNav(link.href)}
-                className="text-left text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300 hover:text-orange-500"
-              >
-                {link.name}
-              </button>
-            ))}
-
-            <a
-              href="/resume.pdf"
-              className="w-fit px-5 py-2 rounded-full bg-orange-500 text-white"
+        {/* MOBILE MENU (ANIMATED) */}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden overflow-hidden pb-4"
             >
-              Resume
-            </a>
-          </div>
-        </div>
+              <div className="flex flex-col gap-4">
+                {links.map((link) => (
+                  <button
+                    key={link.name}
+                    onClick={() => handleNav(link.href)}
+                    className="text-left text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300 hover:text-orange-500"
+                  >
+                    {link.name}
+                  </button>
+                ))}
+
+                <a
+  href={resume}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="hidden md:block px-5 py-2 rounded-full bg-orange-500 text-white font-medium hover:scale-105 transition shadow-md"
+>
+  Resume
+</a>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
