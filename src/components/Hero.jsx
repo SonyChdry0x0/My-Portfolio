@@ -111,10 +111,10 @@ export default function Hero() {
           </motion.button>
 
           <a
-            href={resume}
-            download
-            className="flex items-center gap-2 border border-gray-200 dark:border-gray-700 px-6 py-3 rounded-xl text-gray-700 dark:text-gray-300 hover:text-blue-500 hover:border-blue-400"
-          >
+  href="/resume.pdf"
+  download="Sony-Chaudhary-CV.pdf"
+  className="flex items-center gap-2 border border-gray-200 dark:border-gray-700 px-6 py-3 rounded-xl text-gray-700 dark:text-gray-300 hover:text-blue-500 hover:border-blue-400"
+>
             <FaDownload size={12} />
             Download CV
           </a>
