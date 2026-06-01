@@ -48,7 +48,7 @@ export default function Hero() {
   }, [text, isDeleting, wordIndex]);
 
   return (
-    <section className="relative min-h-screen flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-16 py-16 bg-white dark:bg-slate-950 gap-12 overflow-hidden"
+    <section className="relative min-h-screen flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-13 py-16 bg-white dark:bg-slate-950 gap-12 overflow-hidden"
       id="hero"
 >
       {/* GRID BACKGROUND */}
@@ -83,8 +83,8 @@ export default function Hero() {
         </div>
 
         {/* TITLE */}
-        <h1 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-5">
-          Turning ideas into <br/><span className="text-blue-600">modern</span>
+        <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-5">
+          Turning ideas into <span className="text-blue-600">modern</span>
           <br />
           web experiences
         </h1>
