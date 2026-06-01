@@ -48,7 +48,7 @@ export default function Hero() {
   }, [text, isDeleting, wordIndex]);
 
   return (
-    <section className="relative min-h-screen flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-20 py-10 bg-white dark:bg-slate-950 gap-8 overflow-hidden"
+    <section className="relative min-h-screen flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-16 py-10 bg-white dark:bg-slate-950 gap-8 overflow-hidden"
       id="hero"
 >
       {/* GRID BACKGROUND */}
