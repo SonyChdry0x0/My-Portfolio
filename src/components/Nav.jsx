@@ -169,7 +169,7 @@ export default function Nav() {
             ))}
             <div className="border-t border-gray-100 dark:border-slate-700 pt-3 mt-1">
               <a
-                href={resume}
+                href="/sonychaudharycv.pdf"
                 download
                 className="block text-center px-5 py-2 rounded-full bg-blue-600 text-white text-sm font-medium hover:opacity-90 transition"
               >
