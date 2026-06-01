@@ -11,7 +11,7 @@ export default function Nav() {
   const linkRefs = useRef([]);
 
   const links = [
-    { name: "Home", href: "#hero" },
+    { name: "About", href: "#hero" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
     { name: "Contact", href: "#contact" },
@@ -80,7 +80,7 @@ export default function Nav() {
           <div className="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-sm">
             S
           </div>
-          <h2 className="font-semibold text-base text-gray-900 dark:text-white  sm:block">
+          <h2 className="font-semibold md:text-lg text-base text-gray-900 dark:text-white  sm:block">
             Sony <span className="text-blue-600">Chaudhary</span>
           </h2>
         </div>
