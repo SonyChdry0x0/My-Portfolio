@@ -84,7 +84,7 @@ export default function Hero() {
 
         {/* TITLE */}
         <h1 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-5">
-          Turning ideas into <span className="text-blue-600">modern</span>
+          Turning ideas into <br/><span className="text-blue-600">modern</span>
           <br />
           web experiences
         </h1>
