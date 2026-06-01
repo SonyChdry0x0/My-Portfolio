@@ -12,12 +12,12 @@ Personal portfolio website built with React, Vite, and Tailwind CSS.
 - Framer Motion
 
 ## 🚀 Run Locally
-
+```
 git clone https://github.com/yourusername/your-repo-name.git
 cd your-repo-name
 npm install
 npm run dev
-
+```
 
 ## 📬 Contact
 - LinkedIn:https://www.linkedin.com/in/sony-kumari-chaudhary-000b35314/
