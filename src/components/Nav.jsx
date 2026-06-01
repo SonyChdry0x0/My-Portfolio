@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-import resume from "../assets/sonychaudharycv.pdf";
+
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -72,7 +72,7 @@ export default function Nav() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
         className="max-w-6xl mx-auto flex items-center justify-between
-          bg-white dark:bg-slate-900
+          bg-white dark:bg-slate-950
           border border-gray-200 dark:border-slate-700
           rounded-full px-6 py-4 shadow-md"
       >
@@ -121,8 +121,7 @@ export default function Nav() {
             {darkMode ? <FaSun size={14} /> : <FaMoon size={14} />}
           </button>
 
-          <a
-            href={resume}
+          <a href="/sonychaudharycv.pdf" target="_blank" rel="noopener noreferrer"
             download
             className="hidden md:block px-5 py-2 rounded-full bg-blue-600 text-white text-sm font-medium hover:opacity-90 transition shadow-sm"
           >

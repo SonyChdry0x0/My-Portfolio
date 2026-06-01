@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin, FaDownload, FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 import profile from "../assets/self2.png";
-import resume from "../assets/sonychaudharycv.pdf";
+
 
 const words = ["Frontend Developer", "Freelancer"];
 
@@ -111,8 +111,8 @@ export default function Hero() {
           </motion.button>
 
           <a
-  href="/resume.pdf"
-  download="Sony-Chaudhary-CV.pdf"
+  href="sonychaudharycv.pdf"
+  download="SonyChaudharyCV.pdf"
   className="flex items-center gap-2 border border-gray-200 dark:border-gray-700 px-6 py-3 rounded-xl text-gray-700 dark:text-gray-300 hover:text-blue-500 hover:border-blue-400"
 >
             <FaDownload size={12} />
