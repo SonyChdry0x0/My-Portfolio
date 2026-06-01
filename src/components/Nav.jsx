@@ -56,8 +56,6 @@ export default function Nav() {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="flex justify-between items-center h-20">
-
-          {/* LOGO */}
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold">
               S
@@ -68,7 +66,6 @@ export default function Nav() {
             </h2>
           </div>
 
-         
           <div className="hidden md:flex items-center gap-8">
             {links.map((link) => (
               <button
@@ -81,10 +78,7 @@ export default function Nav() {
             ))}
           </div>
 
-          {/* RIGHT SIDE */}
           <div className="flex items-center gap-4">
-
-            {/* DARK MODE */}
             <button
               onClick={toggleDarkMode}
               className="p-3 rounded-full border border-gray-300 dark:border-gray-700 hover:scale-110 transition"
@@ -92,7 +86,6 @@ export default function Nav() {
               {darkMode ? <FaSun /> : <FaMoon />}
             </button>
 
-            
             <a
               href={resume}
               download
@@ -101,7 +94,6 @@ export default function Nav() {
               Resume
             </a>
 
-           
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="md:hidden flex flex-col gap-1.5"
@@ -125,7 +117,6 @@ export default function Nav() {
           </div>
         </div>
 
-        {/* MOBILE MENU (ANIMATED) */}
         <AnimatePresence>
           {menuOpen && (
             <motion.div
@@ -147,13 +138,13 @@ export default function Nav() {
                 ))}
 
                 <a
-  href={resume}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="hidden md:block px-5 py-2 rounded-full bg-orange-500 text-white font-medium hover:scale-105 transition shadow-md"
->
-  Resume
-</a>
+                  href={resume}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden md:block px-5 py-2 rounded-full bg-orange-500 text-white font-medium hover:scale-105 transition shadow-md"
+                >
+                  Resume
+                </a>
               </div>
             </motion.div>
           )}
